@@ -1,11 +1,11 @@
     {% extends "recordapp/base.html" %}
     {% block content %}
     <h2>プログラミング学習記録</h2>
-    <a href="{% url 'recordapp:post'%}">記録を書く</a>
+    <div><a class="record" href="{% url 'recordapp:post'%}"><i class="fas fa-pencil-alt"></i>記録を書く</a></div>
     <ul>
         {% for post in posts %}
-            <li>{{ post.date }}: {{ post.what_done }} :{{ post.slug }} 
-                <a href="{% url 'recordapp:detail' post.slug%}">詳細</a>
+            <li>{{ post.date }}<br>{{ post.what_done }}  
+                <a class="detail" href="{% url 'recordapp:detail' post.slug%}">詳細</a>
             </li>
 
         {% empty %}

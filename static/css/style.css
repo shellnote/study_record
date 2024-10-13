@@ -1,4 +1,31 @@
 
+h2{
+    text-align: center;
+}
 label{
     display: block;
+}
+.detail {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    border: 1px solid #000;
+    background-color: gray;
+    padding: 5px;
+    margin-left: 10px;
+}
+.record{
+    color: #000;
+}
+li{
+    margin: 10px 0;
+    border-bottom: 1px solid #000;
+    padding-bottom: 8px;
+}
+ul{
+    list-style: none;
+}
+
+/* detail */
+.post p{
+    border-bottom:1px solid #000; 
 }
