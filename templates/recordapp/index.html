@@ -7,5 +7,12 @@
 </head>
 <body>
     <h2>プログラミング学習記録</h2>
+    <ul>
+        {% for post in posts %}
+            <li>{{ post.date }}: {{ post.what_done }} </li>
+        {% empty %}
+            <li>勉強記録がありません。</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
