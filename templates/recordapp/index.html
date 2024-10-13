@@ -4,7 +4,10 @@
     <a href="{% url 'recordapp:post'%}">記録を書く</a>
     <ul>
         {% for post in posts %}
-            <li>{{ post.date }}: {{ post.what_done }} </li>
+            <li>{{ post.date }}: {{ post.what_done }} :{{ post.slug }} 
+                <a href="{% url 'recordapp:detail' post.slug%}">詳細</a>
+            </li>
+
         {% empty %}
             <li>勉強記録がありません。</li>
         {% endfor %}

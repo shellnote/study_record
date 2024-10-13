@@ -1,0 +1,17 @@
+{% extends "recordapp/base.html" %}
+{% block content %}
+<h2>学習記録</h2>
+<div>日時：{{ post.date }}</div>
+<div>本日の作業内容：{{ post.what_done }}</div>
+<div>本日の課題：{{ post.what_not_done }}</div>
+<div>本日の取得スキル：{{ post.what_learned }}</div>
+<div>まとめノート
+    {% if post.summary_image %}
+    <img src="{{ post.summary_image.url }}" alt="まとめノート">
+    {% else %}
+        <p>画像はありません</p>
+    {% endif %}</div>
+
+<a href="{% url 'recordapp:index' %}">一覧に戻る</a>
+
+{% endblock %}
