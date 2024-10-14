@@ -1,7 +1,7 @@
     {% extends "recordapp/base.html" %}
     {% block content %}
     <h2>プログラミング学習記録</h2>
-    <div><a class="record" href="{% url 'recordapp:post'%}"><i class="fas fa-pencil-alt"></i>記録を書く</a></div>
+    <div class="record"><a  href="{% url 'recordapp:post'%}"><i class="fas fa-pencil-alt"></i>記録を書く</a></div>
     <ul>
         {% for post in posts %}
             <li>{{ post.date }}<br>{{ post.what_done }}  
