@@ -1,5 +1,11 @@
 {% extends "recordapp/base.html" %}
 {% block content %}
+<form method="POST">
+    {% csrf_token%}
+    <p>このページを削除してよろしいですか</p>
+    {{form.as_p}}
+    <button type="submit">削除</button>
+</form>
 <h2>学習記録</h2>
 <div class="post">
     <p>本日の作業内容：{{ post.what_done }}</p>
@@ -14,9 +20,4 @@
         {% endif %}
     </div>
 </div>
-
-<a href="{% url 'recordapp:detail_update' post.slug %}">編集</a><br>
-<a href="{% url 'recordapp:detail_delete' post.slug %}">削除</a><br>
-<a href="{% url 'recordapp:index' %}">一覧に戻る</a>
-
 {% endblock %}

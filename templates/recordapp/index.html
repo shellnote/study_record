@@ -12,4 +12,8 @@
             <li>勉強記録がありません。</li>
         {% endfor %}
     </ul>
+    <form action="{% url 'accounts:logout' %}" method="post">
+        {% csrf_token%}
+        <button type="submit">ログアウト</button>
+    </form>
     {% endblock %}

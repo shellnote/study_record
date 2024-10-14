@@ -1,4 +1,5 @@
 from django.db import models
+from pathlib import Path
 
 
 class Post(models.Model):  
@@ -25,3 +26,10 @@ class Post(models.Model):
             super().save(*args, **kwargs)  # もう一度保存してslugを更新
         else:
             super().save(*args, **kwargs)
+            
+    # ファイルに保存された画像を削除する
+    def delete(self, *args, **kwargs):
+        summary_image =self.summary_image
+        super().delete(*args, **kwargs)
+        if summary_image:
+            Path(summary_image.path).unlink(missing_ok=True)
