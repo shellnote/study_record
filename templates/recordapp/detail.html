@@ -14,9 +14,10 @@
         {% endif %}
     </div>
 </div>
-
+{% if user.is_authenticated %}
 <a href="{% url 'recordapp:detail_update' post.slug %}">編集</a><br>
 <a href="{% url 'recordapp:detail_delete' post.slug %}">削除</a><br>
+{% endif %}
 <a href="{% url 'recordapp:index' %}">一覧に戻る</a>
 
 {% endblock %}

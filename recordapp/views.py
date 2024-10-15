@@ -4,7 +4,7 @@ from .models import Post
 from .forms import PostForm 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-class IndexView(LoginRequiredMixin,View):
+class IndexView(View):
     def get(self, request):
         # posts = Post.objects.all()  # データベースから全てのPostを取得
         posts = Post.objects.order_by("-date")  # データベースから全てのPostを取得
@@ -21,7 +21,7 @@ class PostCreateView(LoginRequiredMixin,View):
             return redirect("recordapp:index")
         return render(request, "recordapp/index_form.html", {"form":form})
         
-class PostDetailView(LoginRequiredMixin,View):
+class PostDetailView(View):
     def get(self, request, slug):
         post = get_object_or_404(Post, slug=slug)
         return render(request, "recordapp/detail.html", {"post": post})
