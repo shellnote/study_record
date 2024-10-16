@@ -1,6 +1,15 @@
 from django.db import models
 from pathlib import Path
 
+class Category(models.Model):
+    name = models.CharField(verbose_name='カテゴリー', max_length=50)
+    
+    class Meta:
+        verbose_name = 'カテゴリー'
+        verbose_name_plural = 'カテゴリー一覧'
+        
+    def __str__(self):
+        return self.name
 
 class Post(models.Model):  
     slug = models.SlugField(blank=True, editable=True, unique=True)
@@ -9,6 +18,8 @@ class Post(models.Model):
     what_not_done = models.TextField(verbose_name='本日の課題', blank=True)
     what_learned = models.TextField(verbose_name='本日の取得スキル', blank=True)
     summary_image = models.ImageField(upload_to='study_summaries/', verbose_name='まとめノート', blank=True, null=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='カテゴリー', related_name='posts', null=True, blank=True)
+
     
     class Meta:
         verbose_name = '勉強記録'
@@ -33,3 +44,4 @@ class Post(models.Model):
         super().delete(*args, **kwargs)
         if summary_image:
             Path(summary_image.path).unlink(missing_ok=True)
+

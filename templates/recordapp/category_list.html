@@ -1,0 +1,11 @@
+{% extends "recordapp/base.html" %}
+{% block content %}
+<h2>{{ category.name }}</h2>
+<ul>
+    {% for post in posts %}
+    <li>{{ post.date }}:{{ post.what_done }} <a href="{% url 'recordapp:detail' post.slug %}">詳細</a></li>
+    
+    {% endfor %}
+</ul>
+<a href="{% url 'recordapp:index' %}">一覧に戻る</a>
+{% endblock %}

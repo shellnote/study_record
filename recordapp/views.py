@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.views import View
-from .models import Post
+from .models import Post, Category
 from .forms import PostForm 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -47,6 +47,17 @@ class PostDeleteView(LoginRequiredMixin,View):
         post = get_object_or_404(Post, slug=slug)
         post.delete()
         return redirect("recordapp:index")
+
+class CategoryListView(View):
+    def get(self, request, category_id):
+        category = get_object_or_404(Category, id=category_id)
+        posts = Post.objects.filter(category=category)
+        context = {
+            "category": category,
+             "posts": posts
+             
+        }
+        return render(request, "recordapp/category_list.html", context)
         
 
 index = IndexView.as_view()
@@ -54,3 +65,4 @@ post_create =  PostCreateView.as_view()
 detail = PostDetailView.as_view()
 detail_update = PostUpdateView.as_view()
 detail_delete = PostDeleteView.as_view()
+category_list = CategoryListView.as_view()
