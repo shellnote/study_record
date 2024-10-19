@@ -54,8 +54,7 @@ class CategoryListView(View):
         posts = Post.objects.filter(category=category)
         context = {
             "category": category,
-             "posts": posts
-             
+            "posts": posts  
         }
         return render(request, "recordapp/category_list.html", context)
         

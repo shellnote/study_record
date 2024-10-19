@@ -1,6 +1,6 @@
 {% extends "recordapp/base.html" %}
 {% block content %}
-<h2>記録を書く</h2>
+<h2>記録を編集する</h2>
 <form method="POST" enctype="multipart/form-data" class="custom-form">
     {% csrf_token%}
     {{form.as_p}}

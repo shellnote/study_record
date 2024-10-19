@@ -17,6 +17,11 @@
         {% for post in posts %}
             <li>{{ post.date }}<br>{{ post.what_done }}  
                 <a class="detail" href="{% url 'recordapp:detail' post.slug%}">詳細</a>
+                {% if post.category%}
+                <a href="{% url 'recordapp:category_list' post.category.id%}">{{ post.category }}</a>
+                {% else %}
+                <p>カテゴリなし</p>
+                {% endif %}
             </li>
 
         {% empty %}
