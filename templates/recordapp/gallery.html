@@ -1,0 +1,20 @@
+{% extends "recordapp/base.html" %}
+{% block content %}
+<h2>記録ギャラリー一覧</h2>
+<ul class="flex">
+    {% for post in posts %}
+    <li>
+        <a href="{% url 'recordapp:detail' post.slug %}">
+            <img src="{{ post.summary_image.url }}" alt="{{ post.what_done }}">
+        </a>
+        <div class="post-info">
+            <p>{{ post.date }}<br> {{ post.what_done }}</p>
+        </div>
+        <a class="gallery_detail"href="{% url 'recordapp:detail' post.slug %}">詳細</a>
+    </li>
+    {% endfor %}
+</ul>
+<div style="text-align: center;"> 
+    <a  href="{% url 'recordapp:index' %}">一覧表示</a>
+</div>
+{% endblock %}

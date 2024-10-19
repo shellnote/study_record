@@ -57,7 +57,11 @@ class CategoryListView(View):
             "posts": posts  
         }
         return render(request, "recordapp/category_list.html", context)
-        
+    
+class GalleryView(View):
+    def get(self, request):
+        posts = Post.objects.order_by('-date')[:6]   
+        return render(request, "recordapp/gallery.html", {"posts": posts})
 
 index = IndexView.as_view()
 post_create =  PostCreateView.as_view()
@@ -65,3 +69,4 @@ detail = PostDetailView.as_view()
 detail_update = PostUpdateView.as_view()
 detail_delete = PostDeleteView.as_view()
 category_list = CategoryListView.as_view()
+gallery = GalleryView.as_view()

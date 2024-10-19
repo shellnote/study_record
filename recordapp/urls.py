@@ -11,6 +11,7 @@ urlpatterns = [
     path("post/<slug:slug>/update", views.detail_update, name="detail_update"),
     path("post/<slug:slug>/delete", views.detail_delete, name="detail_delete"),
     path("category/<int:category_id>/posts/", views.category_list, name="category_list"),
+    path("gallery/", views.gallery, name="gallery"),
        
 ]
 
